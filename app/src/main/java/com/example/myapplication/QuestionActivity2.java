@@ -20,30 +20,30 @@ public class QuestionActivity2 extends AppCompatActivity {
 
 
     String question[] = {
-            "What is required in each C program?",
-            "Which of the following comment is correct when a macro definition includes arguments?",
-            "What is a lint?",
-            "What is the output of this statement \"printf(\"%d\", (a++))\"?",
-            "If abcdefg is the input, the output will be"
+            "Which of the following is the correct syntax to print the message in C++ language?",
+            "Which of the following is the correct identifier?",
+            "Which of the following is the address operator?",
+            "Which of the following features must be supported by any programming language to become a pure object-oriented programming language?",
+            "The programming language that has the ability to create new data types is called"
 
     };
     String answer[] = {
 
-            "The program must have at least one function.",
-            " The opening parenthesis should immediately follow the macro name.",
-            "Analyzing tool",
-            "The current value of \"a\".",
-            "efg"
+            "cout <<\"Hello world!\";",
+            " VAR_123",
+            "&",
+            "All of the above",
+            "Extensible"
 
 
     };
     String opt[] = {
 
-            "The program must have at least one function.", "The program does not require any function.", "Input data", "Output data",
-            " The opening parenthesis should immediately follow the macro name.", "There should be at least one blank between the macro name and the opening parenthesis", "There should be only one blank between the macro name and the opening parenthesis.", "All the above comments are correct.",
-            "Analyzing tool", "C compiler", "Interactive debugger", "C interpreter",
-            "The current value of \"a\".", "The value of (a + 1)", "Error message", "Garbage",
-            "efg", "abcd", "abc", "Garbage"
+            "cout <<\"Hello world!\";", "Cout << Hello world! ;", "Out <<\"Hello world!;", "None of the above",
+            " VAR_123", "$var_name", "varname@", "None of the above",
+            "&", "@", "#", "%",
+            "Polymorphism", "Encapsulation", "Inheritance", "All of the above",
+            "Extensible", "Reprehensible", "Encapsulated", "Overloaded"
 
 
 
@@ -81,10 +81,10 @@ public class QuestionActivity2 extends AppCompatActivity {
         tv = (TextView) findViewById(R.id.tvque);
 
         radio_g = (RadioGroup) findViewById(R.id.answergrp);
-        rb1 = (RadioButton) findViewById(R.id.radiobutton);
-        rb2 = (RadioButton) findViewById(R.id.radiobutton);
-        rb3 = (RadioButton) findViewById(R.id.radiobutton);
-        rb4 = (RadioButton) findViewById(R.id.radiobutton);
+        rb1 = (RadioButton) findViewById(R.id.radiobutton1);
+        rb2 = (RadioButton) findViewById(R.id.radiobutton2);
+        rb3 = (RadioButton) findViewById(R.id.radiobutton3);
+        rb4 = (RadioButton) findViewById(R.id.radiobutton4);
 
         tv.setText(question[flag]);
         rb1.setText(opt[0]);
