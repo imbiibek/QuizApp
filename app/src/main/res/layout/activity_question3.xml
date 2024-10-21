@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="A"
-            android:id="@+id/radiobutton"
+            android:id="@+id/radiobutton1"
             android:checked="false"
             android:textColor="#FFF"/>
 
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="B"
-            android:id="@+id/radiobutton"
+            android:id="@+id/radiobutton2"
             android:checked="false"
             android:textColor="#FFF"/>
 
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="C"
-            android:id="@+id/radiobutton"
+            android:id="@+id/radiobutton3"
             android:checked="false"
             android:textColor="#FFF"/>
 
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="D"
-            android:id="@+id/radiobutton"
+            android:id="@+id/radiobutton4"
             android:checked="false"
             android:textColor="#FFF"/>
 

@@ -81,10 +81,10 @@ public class QuestionActivity6 extends AppCompatActivity {
         tv = (TextView) findViewById(R.id.tvque);
 
         radio_g = (RadioGroup) findViewById(R.id.answergrp);
-        rb1 = (RadioButton) findViewById(R.id.radiobutton);
-        rb2 = (RadioButton) findViewById(R.id.radiobutton);
-        rb3 = (RadioButton) findViewById(R.id.radiobutton);
-        rb4 = (RadioButton) findViewById(R.id.radiobutton);
+        rb1 = (RadioButton) findViewById(R.id.radiobutton1);
+        rb2 = (RadioButton) findViewById(R.id.radiobutton2);
+        rb3 = (RadioButton) findViewById(R.id.radiobutton3);
+        rb4 = (RadioButton) findViewById(R.id.radiobutton4);
 
         tv.setText(question[flag]);
         rb1.setText(opt[0]);
