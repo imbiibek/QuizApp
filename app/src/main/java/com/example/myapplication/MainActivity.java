@@ -32,17 +32,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Cplus(View view) {
+
+        Intent intent = new Intent(MainActivity.this, QuestionActivity2.class);
+        startActivity(intent);
     }
 
     public void Python(View view) {
+        Intent intent = new Intent(MainActivity.this, QuestionActivity3.class);
+        startActivity(intent);
     }
 
     public void Html(View view) {
+        Intent intent = new Intent(MainActivity.this, QuestionActivity4.class);
+        startActivity(intent);
     }
 
     public void Kotlin(View view) {
+        Intent intent = new Intent(MainActivity.this, QuestionActivity5.class);
+        startActivity(intent);
     }
 
     public void Csharp(View view) {
+        Intent intent = new Intent(MainActivity.this, QuestionActivity6.class);
+        startActivity(intent);
     }
 }
