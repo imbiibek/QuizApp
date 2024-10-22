@@ -20,30 +20,30 @@ public class QuestionActivity6 extends AppCompatActivity {
 
 
     String question[] = {
-            "What is required in each C program?",
-            "Which of the following comment is correct when a macro definition includes arguments?",
-            "What is a lint?",
-            "What is the output of this statement \"printf(\"%d\", (a++))\"?",
-            "If abcdefg is the input, the output will be"
+            "Which of the following converts a type to a byte value in C#?",
+            "Which of the following converts a type to a double type in C#?",
+            "Which of the following operator determines whether an object is of a certain type in C#?",
+            " Which of the following is the default access specifier of a class member variable?",
+            "Which of the following is the correct about interfaces in C#?"
 
     };
     String answer[] = {
 
-            "The program must have at least one function.",
-            " The opening parenthesis should immediately follow the macro name.",
-            "Analyzing tool",
-            "The current value of \"a\".",
-            "efg"
+            "ToByte.",
+            " ToDouble",
+            " is",
+            "Private",
+            "Both of the above."
 
 
     };
     String opt[] = {
 
-            "The program must have at least one function.", "The program does not require any function.", "Input data", "Output data",
-            " The opening parenthesis should immediately follow the macro name.", "There should be at least one blank between the macro name and the opening parenthesis", "There should be only one blank between the macro name and the opening parenthesis.", "All the above comments are correct.",
-            "Analyzing tool", "C compiler", "Interactive debugger", "C interpreter",
-            "The current value of \"a\".", "The value of (a + 1)", "Error message", "Garbage",
-            "efg", "abcd", "abc", "Garbage"
+            "ToByte", "ToSingle", "ToChar", "ToDateTime",
+            "ToDouble", "ToDecimal", "ToInt16", "ToInt32.",
+            " is", " ?:", "as", "*",
+            "Private", "Public", "Protected", "Internal",
+            "Interfaces are declared using the interface keyword.", "Interface methods are public by default.", "Both of the above.", "None of the above."
 
 
 

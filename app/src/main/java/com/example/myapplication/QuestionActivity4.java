@@ -20,30 +20,30 @@ public class QuestionActivity4 extends AppCompatActivity {
 
 
     String question[] = {
-            "What is required in each C program?",
-            "Which of the following comment is correct when a macro definition includes arguments?",
-            "What is a lint?",
-            "What is the output of this statement \"printf(\"%d\", (a++))\"?",
-            "If abcdefg is the input, the output will be"
+            "HTML stands for -",
+            " The correct sequence of HTML tags for starting a webpage is -",
+            "Which of the following element is responsible for making the text bold in HTML?",
+            "Which of the following tag is used for inserting the largest heading in HTML?",
+            "Which of the following tag is used to insert a line-break in HTML?"
 
     };
     String answer[] = {
 
-            "The program must have at least one function.",
-            " The opening parenthesis should immediately follow the macro name.",
-            "Analyzing tool",
-            "The current value of \"a\".",
-            "efg"
+            "HyperText Markup Language",
+            " HTML, Head, Title, Body",
+            "<b>",
+            "<h1>",
+            "<br>"
 
 
     };
     String opt[] = {
 
-            "The program must have at least one function.", "The program does not require any function.", "Input data", "Output data",
-            " The opening parenthesis should immediately follow the macro name.", "There should be at least one blank between the macro name and the opening parenthesis", "There should be only one blank between the macro name and the opening parenthesis.", "All the above comments are correct.",
-            "Analyzing tool", "C compiler", "Interactive debugger", "C interpreter",
-            "The current value of \"a\".", "The value of (a + 1)", "Error message", "Garbage",
-            "efg", "abcd", "abc", "Garbage"
+            "HyperText Markup Language", "HyperText and links Markup Language", "HyperText Markup Language", "None of these",
+            " HTML, Head, Title, Body", "Head, Title, HTML, body", "HTML, Body, Title, Head", "All the above comments are correct.",
+            "<pre>", "<a>", "<b>", "<br>",
+            "<h1>", "<h3>", "<h5>", "<h6>",
+            "<br>", "<a>", "<pre>", "<b>"
 
 
 

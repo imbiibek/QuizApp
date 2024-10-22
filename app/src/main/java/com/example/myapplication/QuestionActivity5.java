@@ -20,30 +20,30 @@ public class QuestionActivity5 extends AppCompatActivity {
 
 
     String question[] = {
-            "What is required in each C program?",
-            "Which of the following comment is correct when a macro definition includes arguments?",
-            "What is a lint?",
-            "What is the output of this statement \"printf(\"%d\", (a++))\"?",
-            "If abcdefg is the input, the output will be"
+            "What is Kotlin?",
+            " Which platform does Kotlin primarily target?",
+            "What paradigm(s) does the Kotlin programming language follow?",
+            " How do you define a variable in Kotlin that cannot be reassigned?",
+            " How do you declare a nullable variable in Kotlin?"
 
     };
     String answer[] = {
 
-            "The program must have at least one function.",
-            " The opening parenthesis should immediately follow the macro name.",
-            "Analyzing tool",
-            "The current value of \"a\".",
-            "efg"
+            "A statically-typed programming language for the JVM, Android, and browser",
+            " JVM (Java Virtual Machine) Bytecode",
+            "Both Object-Oriented and Functional",
+            " val",
+            "var name: String?"
 
 
     };
     String opt[] = {
 
-            "The program must have at least one function.", "The program does not require any function.", "Input data", "Output data",
+            "A statically-typed programming language for the JVM, Android, and browser", "JVM (Java Virtual Machine) Bytecode", "Input data", "Output data",
             " The opening parenthesis should immediately follow the macro name.", "There should be at least one blank between the macro name and the opening parenthesis", "There should be only one blank between the macro name and the opening parenthesis.", "All the above comments are correct.",
-            "Analyzing tool", "C compiler", "Interactive debugger", "C interpreter",
-            "The current value of \"a\".", "The value of (a + 1)", "Error message", "Garbage",
-            "efg", "abcd", "abc", "Garbage"
+            "Both Object-Oriented and Functional", "Only Object-Oriented", "Procedural", "Only Functional",
+            "var", "val", "const", "final",
+            "var name: String?", " var name: String", " var name: String", "String name = null"
 
 
 
