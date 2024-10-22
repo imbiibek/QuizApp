@@ -29,11 +29,13 @@ public class QuestionActivity6 extends AppCompatActivity {
     };
     String answer[] = {
 
+
             "ToByte.",
             " ToDouble",
             " is",
             "Private",
             "Both of the above."
+
 
 
     };
@@ -44,6 +46,8 @@ public class QuestionActivity6 extends AppCompatActivity {
             " is", " ?:", "as", "*",
             "Private", "Public", "Protected", "Internal",
             "Interfaces are declared using the interface keyword.", "Interface methods are public by default.", "Both of the above.", "None of the above."
+
+
 
 
 
@@ -64,7 +68,7 @@ public class QuestionActivity6 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_question2);
+        setContentView(R.layout.activity_question6);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

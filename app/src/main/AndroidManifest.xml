@@ -16,6 +16,9 @@
             android:name=".ResultActivity6"
             android:exported="false" />
         <activity
+            android:name=".QuestionActivity6"
+            android:exported="false" />
+        <activity
             android:name=".ResultActivity5"
             android:exported="false" />
         <activity
@@ -26,9 +29,6 @@
             android:exported="false" />
         <activity
             android:name=".ResultActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".QuestionActivity6"
             android:exported="false" />
         <activity
             android:name=".QuestionActivity5"
