@@ -14,9 +14,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class ResultActivity extends AppCompatActivity {
 
-    TextView tv, tv2,tv3;
+    TextView tv, tv2, tv3;
     Button btnRestart;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,34 +28,40 @@ public class ResultActivity extends AppCompatActivity {
             return insets;
         });
 
-        tv = (TextView) findViewById(R.id.tvres);
-        tv2 = (TextView) findViewById(R.id.tvres2);
-        tv3 = (TextView) findViewById(R.id.tvres3);
+        tv = findViewById(R.id.tvres);
+        tv2 = findViewById(R.id.tvres2);
+        tv3 = findViewById(R.id.tvres3);
 
-        btnRestart = (Button) findViewById(R.id.btnRestart);
+        btnRestart = findViewById(R.id.btnRestart);
 
+        // Displaying correct answers, wrong answers, and final score
         StringBuffer sb = new StringBuffer();
-        sb.append("Correct answer :" + QuestionActivity.correct + "\n");
+        sb.append("Correct answer: " + QuestionActivity.correct + "\n");
 
         StringBuffer sb2 = new StringBuffer();
-        sb2.append("Wrong answer :" + QuestionActivity.wrong  + "\n");
+        sb2.append("Wrong answer: " + QuestionActivity.wrong + "\n");
 
         StringBuffer sb3 = new StringBuffer();
-        sb3.append("Final Score :" + QuestionActivity.correct + "\n");
+        sb3.append("Final Score: " + QuestionActivity.correct + "\n");
 
         tv.setText(sb);
         tv2.setText(sb2);
         tv3.setText(sb3);
 
+        // Restart button to reset the quiz
         btnRestart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Resetting static fields in QuestionActivity
+                QuestionActivity.correct = 0;
+                QuestionActivity.wrong = 0;
+                QuestionActivity.marks = 0;
 
+                // Starting MainActivity to restart the quiz
                 Intent intent = new Intent(ResultActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish(); // Finish ResultActivity so it doesn’t stay in the back stack
             }
         });
-
-
     }
 }

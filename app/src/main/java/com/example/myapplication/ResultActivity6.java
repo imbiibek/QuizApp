@@ -14,49 +14,45 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class ResultActivity6 extends AppCompatActivity {
 
-    TextView tv, tv2,tv3;
+    TextView tv, tv2, tv3;
     Button btnRestart;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_result6);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        tv = (TextView) findViewById(R.id.tvres);
-        tv2 = (TextView) findViewById(R.id.tvres2);
-        tv3 = (TextView) findViewById(R.id.tvres3);
+        tv = findViewById(R.id.tvres);
+        tv2 = findViewById(R.id.tvres2);
+        tv3 = findViewById(R.id.tvres3);
+        btnRestart = findViewById(R.id.btnRestart);
 
-        btnRestart = (Button) findViewById(R.id.btnRestart);
+        // Displaying the correct answers, wrong answers, and final score
+        tv.setText("Correct answer: " + QuestionActivity6.correct);
+        tv2.setText("Wrong answer: " + QuestionActivity6.wrong);
+        tv3.setText("Final Score: " + QuestionActivity6.correct);
 
-        StringBuffer sb = new StringBuffer();
-        sb.append("Correct answer :" + QuestionActivity6.correct + "\n");
-
-        StringBuffer sb2 = new StringBuffer();
-        sb2.append("Wrong answer :" + QuestionActivity6.wrong  + "\n");
-
-        StringBuffer sb3 = new StringBuffer();
-        sb3.append("Final Score :" + QuestionActivity6.correct + "\n");
-
-        tv.setText(sb);
-        tv2.setText(sb2);
-        tv3.setText(sb3);
-
+        // Restart button to reset the quiz
         btnRestart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Resetting static fields in QuestionActivity6
+                QuestionActivity6.correct = 0;
+                QuestionActivity6.wrong = 0;
+                QuestionActivity6.marks = 0;
 
+                // Starting MainActivity to restart the quiz
                 Intent intent = new Intent(ResultActivity6.this, MainActivity.class);
                 startActivity(intent);
+                finish(); // Finish ResultActivity6 to remove it from the back stack
             }
         });
-
-
     }
 }
