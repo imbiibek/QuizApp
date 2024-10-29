@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="700dp"
+    android:layout_height="750dp"
     android:layout_marginTop="10dp"
     android:background="@color/white"
     tools:context=".MainActivity">
@@ -139,6 +139,7 @@
     android:layout_centerHorizontal="true"
     android:layout_marginTop="15dp"
     android:src="@drawable/clogo"></ImageView>
+
 
 
             </RelativeLayout>
@@ -341,13 +342,19 @@
 
         </androidx.cardview.widget.CardView>
 
-
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-
-
-
+        android:text="Click Me"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout3"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
