@@ -9,85 +9,61 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class QuestionActivity2 extends AppCompatActivity {
 
-    String[] question = {
-            "Which of the following is the correct syntax to print the message in C++ language?",
-            "Which of the following is the correct identifier?",
-            "Which of the following is the address operator?",
-            "Which of the following features must be supported by any programming language to become a pure object-oriented programming language?",
-            "The programming language that has the ability to create new data types is called"
-    };
-    String[] answer = {
-            "cout <<\"Hello world!\";",
-            "VAR_123",
-            "&",
-            "All of the above",
-            "Extensible"
-    };
-    String[] opt = {
-            "cout <<\"Hello world!\";", "Cout << Hello world! ;", "Out <<\"Hello world!;", "None of the above",
-            "VAR_123", "$var_name", "varname@", "None of the above",
-            "&", "@", "#", "%",
-            "Polymorphism", "Encapsulation", "Inheritance", "All of the above",
-            "Extensible", "Reprehensible", "Encapsulated", "Overloaded"
-    };
-
-    int[] questionOrder;
-    int flag = 0;
-
+    private List<Question> questionList = new ArrayList<>(); // To hold questions from Firebase
+    private int[] questionOrder; // Array to store shuffled question indices
+    private int flag = 0;
     public static int marks = 0, correct = 0, wrong = 0;
 
-    TextView tv;
-    Button submitbutton, quitbutton;
-    RadioGroup radio_g;
-    RadioButton rb1, rb2, rb3, rb4;
-    private TextView questionnumber;
+    private TextView tv, questionnumber, score;
+    private Button submitbutton, quitbutton;
+    private RadioGroup radio_g;
+    private RadioButton rb1, rb2, rb3, rb4;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_question2);
+        setContentView(R.layout.activity_question);
 
-        // Initialize and shuffle question order
-        initializeShuffledQuestions();
+        // Initialize Firebase Database reference
+        databaseReference = FirebaseDatabase.getInstance().getReference("Quizzes").child("Activity2");
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
-        final TextView score = findViewById(R.id.textview4);
-        TextView textView = findViewById(R.id.DispName);
-        Intent intent = getIntent();
-
+        // Initialize UI elements
+        score = findViewById(R.id.textview4);
         questionnumber = findViewById(R.id.DispName);
         submitbutton = findViewById(R.id.button3);
         quitbutton = findViewById(R.id.buttonquit);
         tv = findViewById(R.id.tvque);
-
         radio_g = findViewById(R.id.answergrp);
         rb1 = findViewById(R.id.radiobutton1);
         rb2 = findViewById(R.id.radiobutton2);
         rb3 = findViewById(R.id.radiobutton3);
         rb4 = findViewById(R.id.radiobutton4);
 
-        setQuestion(flag);
+        // Load questions from Firebase
+        loadQuestionsFromFirebase();
 
         submitbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (radio_g.getCheckedRadioButtonId() == -1) {
                     Toast.makeText(QuestionActivity2.this, "Please select one choice", Toast.LENGTH_SHORT).show();
                     return;
@@ -96,7 +72,8 @@ public class QuestionActivity2 extends AppCompatActivity {
                 RadioButton uans = findViewById(radio_g.getCheckedRadioButtonId());
                 String ansText = uans.getText().toString();
 
-                if (ansText.equals(answer[questionOrder[flag]])) {
+                // Check if answer is correct
+                if (ansText.equals(questionList.get(questionOrder[flag]).getAnswer())) {
                     correct++;
                     Toast.makeText(QuestionActivity2.this, "Correct", Toast.LENGTH_SHORT).show();
                 } else {
@@ -105,42 +82,68 @@ public class QuestionActivity2 extends AppCompatActivity {
                 }
 
                 flag++;
-                if (score != null) {
-                    score.setText("" + correct);
-
-                    if (flag < question.length) {
-                        setQuestion(flag);
-                        questionnumber.setText((flag + 1) + "/" + question.length + " Question");
-                    } else {
-                        marks = correct;
-                        Intent in = new Intent(QuestionActivity2.this, ResultActivity2.class);
-                        startActivity(in);
-                    }
-
-                    radio_g.clearCheck();
+                if (flag < questionList.size()) {
+                    setQuestion(flag);
+                    questionnumber.setText((flag + 1) + "/" + questionList.size() + " Question");
+                } else {
+                    marks = correct;
+                    Intent in = new Intent(QuestionActivity2.this, ResultActivity2.class);
+                    startActivity(in);
                 }
+                score.setText(String.valueOf(correct));
+                radio_g.clearCheck();
             }
         });
 
         quitbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(getApplicationContext(), ResultActivity2.class);
+                Intent intent1 = new Intent(getApplicationContext(), ResultActivity.class);
                 startActivity(intent1);
+            }
+        });
+    }
+
+    // Load questions from Firebase
+    private void loadQuestionsFromFirebase() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                questionList.clear(); // Clear existing questions
+                for (DataSnapshot quizSnapshot : dataSnapshot.getChildren()) {
+                    String questionText = quizSnapshot.child("question").getValue(String.class);
+                    List<String> options = new ArrayList<>();
+                    for (DataSnapshot optionSnapshot : quizSnapshot.child("options").getChildren()) {
+                        options.add(optionSnapshot.getValue(String.class));
+                    }
+                    String answer = quizSnapshot.child("answer").getValue(String.class);
+
+                    // Create a new Question object and add it to the list
+                    questionList.add(new Question(questionText, options, answer));
+                }
+
+                // Shuffle questions once data is loaded
+                initializeShuffledQuestions();
+                setQuestion(flag);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(QuestionActivity2.this, "Failed to load questions", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     // Initialize and shuffle the order of questions
     private void initializeShuffledQuestions() {
-        questionOrder = new int[question.length];
-        for (int i = 0; i < question.length; i++) {
+        questionOrder = new int[questionList.size()];
+        for (int i = 0; i < questionList.size(); i++) {
             questionOrder[i] = i;
         }
 
         // Fisher-Yates shuffle for question indices
         Random random = new Random();
-        for (int i = question.length - 1; i > 0; i--) {
+        for (int i = questionList.size() - 1; i > 0; i--) {
             int j = random.nextInt(i + 1);
             int temp = questionOrder[i];
             questionOrder[i] = questionOrder[j];
@@ -151,10 +154,37 @@ public class QuestionActivity2 extends AppCompatActivity {
     // Set the current question and its options based on shuffled order
     private void setQuestion(int index) {
         int questionIndex = questionOrder[index];
-        tv.setText(question[questionIndex]);
-        rb1.setText(opt[questionIndex * 4]);
-        rb2.setText(opt[questionIndex * 4 + 1]);
-        rb3.setText(opt[questionIndex * 4 + 2]);
-        rb4.setText(opt[questionIndex * 4 + 3]);
+        Question currentQuestion = questionList.get(questionIndex);
+
+        tv.setText(currentQuestion.getQuestionText());
+        rb1.setText(currentQuestion.getOptions().get(0));
+        rb2.setText(currentQuestion.getOptions().get(1));
+        rb3.setText(currentQuestion.getOptions().get(2));
+        rb4.setText(currentQuestion.getOptions().get(3));
+    }
+}
+
+// Define a Question class to hold question data
+class Question2 {
+    private String questionText;
+    private List<String> options;
+    private String answer;
+
+    public Question2(String questionText, List<String> options, String answer) {
+        this.questionText = questionText;
+        this.options = options;
+        this.answer = answer;
+    }
+
+    public String getQuestionText() {
+        return questionText;
+    }
+
+    public List<String> getOptions() {
+        return options;
+    }
+
+    public String getAnswer() {
+        return answer;
     }
 }
