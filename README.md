@@ -1,5 +1,9 @@
 Quiz App
 
+This is a demo of my Android app. You can download and try the APK from the link below:
+
+[Download the APK](app-release.apk)
+
 Android quiz application to test knowledge across various programming languages.
 This project uses Firebase for user authentication and real-time data management, providing a randomized question experience each time a user starts a quiz.
 
@@ -16,7 +20,7 @@ Firebase
 
 📸 Screenshots
 
-SplashScreen - https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/splashscreen.jpeg
+![SplashScreen](https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/splashscreen.jpeg)
 Signin Page - https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/signin%20page.jpeg
 SignUp Page - https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/signup%20page.jpeg
 HomeScreen - https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/homepage.jpeg
