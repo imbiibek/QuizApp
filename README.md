@@ -21,12 +21,12 @@ Firebase
 📸 Screenshots
 
 ![SplashScreen](https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/splashscreen.jpeg)
-Signin Page - https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/signin%20page.jpeg
-SignUp Page - https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/signup%20page.jpeg
-HomeScreen - https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/homepage.jpeg
-Logout Page - https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/logout%20section.jpeg
-Question Page - https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/question%20page.jpeg
-Result Page - https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/result%20page.jpeg
+![Signin Page](https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/signin%20page.jpeg)
+![SignUp Page](https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/signup%20page.jpeg)
+![HomeScreen](https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/homepage.jpeg)
+![Logout Page](https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/logout%20section.jpeg)
+![Question Page](https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/question%20page.jpeg)
+![Result Page](https://github.com/imbiibek/QuizApp/blob/6eb4b2c0c57ac690e7e3f960891781c782eeb74c/result%20page.jpeg)
 
 Video Demo :- https://github.com/imbiibek/QuizApp/blob/ecd13ddb994355a68a38b8d9cf627791a7974540/QuizApp%20Video%20demo.mp4
 
